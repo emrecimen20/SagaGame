@@ -84,7 +84,7 @@ public class ToolStore extends NormalLoc {
         }
 
         if(selectArmor!=0){
-            Armor selectedArmor=Armor.getWeaponObjectById(selectArmor);
+            Armor selectedArmor=Armor.getArmorObjectById(selectArmor);
             if(selectedArmor!=null){
                 if(selectedArmor.getPrice()>this.getPlayer().getMoney()){
                     System.out.println("Sorry! You don't have enough money to buy this item.");

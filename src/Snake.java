@@ -1,17 +1,13 @@
+
 import java.util.Random;
+public class Snake extends Obstacle {
+private  static Random rand=new Random();
 
-public class Snake extends Obstacle{
-private int damage;
 
-Random rand=new Random();
-    public Snake(){
-        super(4,"Snake",0, 12);
-        this.damage= rand.nextInt(4)+3;
-        setDamage(damage);
+    public Snake() {
+        super(4, "Snake", rand.nextInt(4)+3, 12, 0);
+
     }
 
-    public int damage(){
-        return damage;
-    }
 
 }

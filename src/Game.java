@@ -2,9 +2,11 @@ import java.util.Scanner;
 
 public  class Game {
      private Scanner input =new Scanner(System.in);
+     private boolean isGameCompleted;
 
-
-
+     public Game() {
+         this.isGameCompleted=false;
+     }
 
      public  void start(){
           System.out.println("Welcome to Saga Game !");
@@ -47,24 +49,42 @@ public  class Game {
                          break;
                     case 1:
                          location=new SafeHouse(player);
+                         if(player.getInventory().isFood() && player.getInventory().isFirewood() && player.getInventory().isWater() ){
+                              System.out.println("You finished game !");
+                              location=null;
+                              break;
+                         }
                          break;
                     case 2:
                          location=new ToolStore(player);
                          break;
                     case 3:
                          location=new Cave(player);
+                         if (player.getInventory().isFood()) {
+                              System.out.println("You finished this area, you can't enter it again!");
+                              continue;
+                         }
                          break;
                     case 4:
                          location=new Forest(player);
+                         if (player.getInventory().isFirewood()) {
+                              System.out.println("You finished this area, you can't enter it again!");
+                              continue;
+                         }
                          break;
                     case 5:
                          location=new River(player);
+                         if (player.getInventory().isWater()) {
+                              System.out.println("You finished this area, you can't enter it again!");
+                              continue;
+                         }
                          break;
                     case 6:
                          location=new Coal(player);
                          break;
                     default:
                          System.out.println("Please enter a valid region.");
+                         continue;
                }
 
                if(location==null){
@@ -72,13 +92,20 @@ public  class Game {
                     break;
                }
                if (!location.onLocation()) {
-                    System.out.println("You died ! Game Over!");
+                    System.out.println("Game Over!");
                     break;
                }
                System.out.println("===================================================");
           }
 
      }
+     public boolean isGameCompleted() {
+          return isGameCompleted;
+     }
 
-
+     public void setGameCompleted(boolean gameCompleted) {
+          isGameCompleted = gameCompleted;
+     }
 }
+
+

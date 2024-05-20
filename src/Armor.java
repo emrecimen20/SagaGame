@@ -13,13 +13,13 @@ public class Armor {
 
     public static Armor[] armors(){
         Armor[] armorList=new Armor[3];
-        armorList[0]=new Armor(1,"Light Armor",1,5);
+        armorList[0]=new Armor(1,"Light Armor",1,15);
         armorList[1]=new Armor(2,"Medium Armor",3,25);
         armorList[2]=new Armor(3,"Heavy Armor",5,40);
         return armorList;
     }
 
-    public static Armor getWeaponObjectById(int id){
+    public static Armor getArmorObjectById(int id){
         for(Armor a : Armor.armors()){
             if(a.getId()==id){
                 return a;

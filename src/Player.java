@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Player {
     private int damage;
     private int health;
+    private int orgHealth;
     private int money;
     private String charName;
     private String name;
@@ -26,6 +27,7 @@ public class Player {
                     "\tHealth :"+gameChar.getHealth()+"" +
                     "\tMoney :" + gameChar.getMoney());
         }
+
 
         System.out.print("Select a Character :");
         select=input.nextInt();
@@ -51,12 +53,16 @@ public class Player {
        this.setCharName(gameChar.getName());
         this.setDamage(gameChar.getDamage());
         this.setHealth(gameChar.getHealth());
+        this.setOrgHealth(gameChar.getHealth());
         this.setMoney(gameChar.getMoney());
     }
 
     public void printInfo(){
-        System.out.println("Weapon : "+this.getInventory().getWeapon().getName()+",  Damage :"+ this.getDamage()+
+        System.out.println("Weapon : "+this.getInventory().getWeapon().getName()+",  Damage :"+ this.getTotalDamage()+
                 ",   Armor : "+this.getInventory().getArmor().getName()+",   Block :"+this.getInventory().getArmor().getBlock() +",  Health :"+ this.getHealth()+ ", Money :"+this.getMoney());
+    }
+    public int getTotalDamage(){
+        return damage + this.getInventory().getWeapon().getDamage();
     }
 
     public Inventory getInventory() {
@@ -68,11 +74,19 @@ public class Player {
     }
 
     public int getDamage() {
-        return damage +this.getInventory().getWeapon().getDamage();
+        return damage;
     }
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public int getOrgHealth() {
+        return orgHealth;
+    }
+
+    public void setOrgHealth(int orgHealth) {
+        this.orgHealth = orgHealth;
     }
 
     public int getHealth() {
@@ -80,6 +94,9 @@ public class Player {
     }
 
     public void setHealth(int health) {
+       if(health<0){
+           health=0;
+       }
         this.health = health;
     }
 

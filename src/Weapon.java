@@ -13,7 +13,7 @@ public class Weapon {
 
     public static Weapon[] weapons(){
             Weapon[] weaponList=new Weapon[3];
-            weaponList[0]=new Weapon(1,"Gun",2,5);
+            weaponList[0]=new Weapon(1,"Gun",2,25);
             weaponList[1]=new Weapon(2,"Sword",3,35);
             weaponList[2]=new Weapon(3,"ShotGun",7,45);
             return weaponList;
